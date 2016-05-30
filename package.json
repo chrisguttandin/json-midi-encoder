@@ -1,0 +1,56 @@
+{
+  "author": "Christoph Guttandin",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "plugins": [
+            "transform-es2015-modules-commonjs"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "webworkify": "^1.2.1"
+  },
+  "description": "This module encodes a JSON representation of MIDI data into a binary MIDI file.",
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "chai": "^3.5.0",
+    "eslint-config-holy-grail": "^3.0.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-githooks": "^0.6.0",
+    "grunt-karma": "^2.0.0",
+    "gruntify-eslint": "^2.0.0",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.5",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-leche": "0.0.6",
+    "karma-mocha": "^1.0.1",
+    "karma-sinon-chai": "^1.2.0",
+    "load-grunt-config": "^0.19.2",
+    "lolex": "^1.5.0",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
+    "watchify": "^3.7.0"
+  },
+  "homepage": "https://github.com/chrisguttandin/json-midi-encoder",
+  "license": "MIT",
+  "main": "src/module.js",
+  "name": "json-midi-encoder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisguttandin/json-midi-encoder.git"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "0.0.0"
+}
