@@ -321,7 +321,7 @@ const _writeVariableLengthQuantity = (value) => {
     uint8Array = new Uint8Array(numberOfBytes);
 
     for (let i = 0; value >> 7; i += 1) { // eslint-disable-line no-bitwise
-        uint8Array[i] = value >> 7 | 0x80; // eslint-disable-line no-bitwise
+        uint8Array[i] = (value >> 7) | 0x80; // eslint-disable-line no-bitwise
         value &= 0x7F; // eslint-disable-line no-bitwise
     }
 
