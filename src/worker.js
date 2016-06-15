@@ -1,7 +1,6 @@
 import { encodeJSON } from './encoder/midi-file';
 
-// @todo Use ES2015 module syntax if webworkify supports it.
-module.exports = (self) => {
+export default (self) => {
     self.addEventListener('message', ({ data: { json } }) => {
         try {
             self.postMessage({
