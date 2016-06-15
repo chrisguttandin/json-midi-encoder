@@ -41,7 +41,7 @@ module.exports = function (config) {
         };
     /* eslint-enable indent */
 
-    if (process.env.TRAVIS) { // jshint ignore: line
+    if (process.env.TRAVIS) {
         configuration.browsers = [
             'ChromeSauceLabs',
             'FirefoxSauceLabs'
@@ -62,7 +62,7 @@ module.exports = function (config) {
             }
         };
 
-        configuration.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER; // jshint ignore: line
+        configuration.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
     } else {
         configuration.browsers = [
             'ChromeCanary',
