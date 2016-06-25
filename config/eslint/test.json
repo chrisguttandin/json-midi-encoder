@@ -1,11 +1,12 @@
 {
     "env": {
-        "mocha": true,
-        "node": true
+        "browser": true,
+        "mocha": true
     },
     "extends": "eslint-config-holy-grail",
     "globals": {
-        "expect": false
+        "expect": false,
+        "leche": false
     },
     "parser": "babel-eslint",
     "rules": {

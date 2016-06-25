@@ -5,7 +5,7 @@ describe('json-midi-encoder', function () {
 
     describe('encodeJSON()', function () {
 
-        leche.withData({ // eslint-disable-line no-undef
+        leche.withData({
             'because': [ 'because.mid', 'because.json' ],
             'scale': [ 'scale.mid', 'scale.json' ],
             'SubTractor 1': [ 'SubTractor 1.mid.txt', 'SubTractor 1.json' ],

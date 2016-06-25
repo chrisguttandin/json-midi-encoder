@@ -203,7 +203,7 @@ const _encodeEvent = (event) => {
         dataView.setUint8(0, 0xFF); // eventTypeByte
         dataView.setUint8(1, 0x03); // metaTypeByte
 
-        textEncoder = new TextEncoder(); // eslint-disable-line no-undef
+        textEncoder = new TextEncoder();
         textArrayBuffer = textEncoder.encode(event.trackName).buffer;
         textLength = _writeVariableLengthQuantity(textArrayBuffer.byteLength);
 
