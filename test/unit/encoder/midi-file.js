@@ -13,7 +13,7 @@ describe('midiFileEncoder', function () {
         }, function (midiFilename, jsonFilename) {
 
             it('should encode the json object', function (done) {
-                this.timeout(3000);
+                this.timeout(4000);
 
                 loadFixtureAsArrayBuffer(midiFilename, function (err, arrayBuffer) {
                     expect(err).to.be.null;
@@ -29,7 +29,7 @@ describe('midiFileEncoder', function () {
             });
 
             it('should refuse to encode a none json object', function (done) {
-                this.timeout(3000);
+                this.timeout(4000);
 
                 loadFixtureAsArrayBuffer(midiFilename, function (err, arrayBuffer) {
                     expect(err).to.be.null;
