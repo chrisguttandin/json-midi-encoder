@@ -6,10 +6,10 @@ describe('json-midi-encoder', function () {
     describe('encodeJSON()', function () {
 
         leche.withData({
-            'because': [ 'because.mid', 'because.json' ],
-            'scale': [ 'scale.mid', 'scale.json' ],
             'SubTractor 1': [ 'SubTractor 1.mid.txt', 'SubTractor 1.json' ],
-            'SubTractor 2': [ 'SubTractor 2.mid', 'SubTractor 2.json' ]
+            'SubTractor 2': [ 'SubTractor 2.mid', 'SubTractor 2.json' ],
+            'because': [ 'because.mid', 'because.json' ],
+            'scale': [ 'scale.mid', 'scale.json' ]
         }, function (midiFilename, jsonFilename) {
 
             it('should encode the json object', function (done) {
