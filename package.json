@@ -58,7 +58,7 @@
     "url": "https://github.com/chrisguttandin/json-midi-encoder.git"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt lint && grunt test"
   },
   "version": "0.0.7"
 }
