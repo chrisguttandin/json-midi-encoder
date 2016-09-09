@@ -6,8 +6,10 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(4);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x20); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x20.
+        dataView.setUint8(1, 0x20);
         dataView.setUint8(2, 1);
         dataView.setUint8(3, event.channelPrefix);
 
@@ -29,8 +31,10 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(3);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x2F); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x2F.
+        dataView.setUint8(1, 0x2F);
         dataView.setUint8(2, 0);
 
         return arrayBuffer;
@@ -40,8 +44,10 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(5);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x59); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x59.
+        dataView.setUint8(1, 0x59);
         dataView.setUint8(2, 2);
         dataView.setUint8(3, event.keySignature.key);
         dataView.setUint8(4, event.keySignature.scale);
@@ -53,8 +59,10 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(4);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x21); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x21.
+        dataView.setUint8(1, 0x21);
         dataView.setUint8(2, 1);
         dataView.setUint8(3, event.midiPort);
 
@@ -108,8 +116,10 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(6);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x51); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x51.
+        dataView.setUint8(1, 0x51);
         dataView.setUint8(2, 3);
         dataView.setUint8(3, event.setTempo.microsecondsPerBeat >> 16); // eslint-disable-line no-bitwise
         dataView.setUint8(4, event.setTempo.microsecondsPerBeat >> 8); // eslint-disable-line no-bitwise
@@ -134,8 +144,10 @@ const _encodeEvent = (event) => {
             frameRateByte = 0x60;
         }
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x54); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x54.
+        dataView.setUint8(1, 0x54);
         dataView.setUint8(2, 5);
         dataView.setUint8(3, event.smpteOffset.hour | frameRateByte); // eslint-disable-line no-bitwise
         dataView.setUint8(4, event.smpteOffset.minutes);
@@ -153,7 +165,8 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(1);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xF0); // eventTypeByte
+        // Write an eventTypeByte with a value of 0xF0.
+        dataView.setUint8(0, 0xF0);
 
         sysexLength = _writeVariableLengthQuantity(event.sysex.length / 2);
         sysexArrayBuffer = new ArrayBuffer(event.sysex.length / 2);
@@ -181,8 +194,10 @@ const _encodeEvent = (event) => {
             counter += 1;
         }
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x58); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x58.
+        dataView.setUint8(1, 0x58);
         dataView.setUint8(2, 4);
         dataView.setUint8(3, event.timeSignature.numerator);
         dataView.setUint8(4, counter);
@@ -200,8 +215,10 @@ const _encodeEvent = (event) => {
         arrayBuffer = new ArrayBuffer(2);
         dataView = new DataView(arrayBuffer);
 
-        dataView.setUint8(0, 0xFF); // eventTypeByte
-        dataView.setUint8(1, 0x03); // metaTypeByte
+        // Write an eventTypeByte with a value of 0xFF.
+        dataView.setUint8(0, 0xFF);
+        // Write a metaTypeByte with a value of 0x03.
+        dataView.setUint8(1, 0x03);
 
         textEncoder = new TextEncoder();
         textArrayBuffer = textEncoder.encode(event.trackName).buffer;
@@ -220,7 +237,8 @@ const _encodeHeaderChunk = (division, format, tracks) => {
     arrayBuffer = new ArrayBuffer(14);
     dataView = new DataView(arrayBuffer);
 
-    dataView.setUint32(0, 1297377380); // MThd
+    // Write MThd as number.
+    dataView.setUint32(0, 1297377380);
     dataView.setUint32(4, 6);
     dataView.setUint16(8, format);
     dataView.setUint16(10, tracks.length);
@@ -264,7 +282,8 @@ const _encodeTrackChunk = (track) => {
     byteLength = 0;
     dataView = new DataView(arrayBuffers[0]);
 
-    dataView.setUint32(0, 1297379947); // MTrk
+    // Write MTrk as number.
+    dataView.setUint32(0, 1297379947);
 
     for (let event of track) {
         let deltaArrayBuffer,
