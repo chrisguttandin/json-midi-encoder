@@ -210,7 +210,7 @@ const _encodeEvent = (event) => {
     if ('trackName' in event) {
         let textArrayBuffer,
             textEncoder,
-            textLength
+            textLength;
 
         arrayBuffer = new ArrayBuffer(2);
         dataView = new DataView(arrayBuffer);
@@ -334,7 +334,7 @@ const _writeVariableLengthQuantity = (value) => {
         uint8Array;
 
     while (Math.pow(2, numberOfBytes * 7) - 1 < value) {
-        numberOfBytes += 1
+        numberOfBytes += 1;
     }
 
     uint8Array = new Uint8Array(numberOfBytes);
