@@ -1,4 +1,4 @@
-function base64ToArrayBuffer(encodedData) {
+function base64ToArrayBuffer (encodedData) {
     var decodedData,
         uint8Array;
 
