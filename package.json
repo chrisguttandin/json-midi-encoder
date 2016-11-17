@@ -27,7 +27,7 @@
   },
   "description": "This module encodes a JSON representation of MIDI data into a binary MIDI file.",
   "devDependencies": {
-    "babel-eslint": "^7.0.0",
+    "babel-eslint": "^7.1.1",
     "chai": "^3.5.0",
     "eslint-config-holy-grail": "^13.0.0",
     "grunt": "^1.0.1",
