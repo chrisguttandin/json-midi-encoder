@@ -8,7 +8,9 @@
         "expect": false,
         "leche": false
     },
-    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "rules": {
         "no-unused-expressions": 0
     }
