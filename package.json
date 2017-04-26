@@ -4,8 +4,8 @@
     "url": "https://github.com/chrisguttandin/json-midi-encoder/issues"
   },
   "dependencies": {
-    "json-midi-encoder-broker": "0.0.2",
-    "json-midi-encoder-worker": "0.0.3"
+    "json-midi-encoder-broker": "^1.0.0",
+    "json-midi-encoder-worker": "^1.0.0"
   },
   "description": "This module encodes a JSON representation of MIDI data into a binary MIDI file.",
   "devDependencies": {
