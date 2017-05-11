@@ -1,4 +1,4 @@
-import { load } from 'json-midi-encoder-broker';
+import { IMidiFile, load } from 'json-midi-encoder-broker';
 import { worker } from './worker/worker';
 
 const blob: Blob = new Blob([ worker ], { type: 'application/javascript' });
