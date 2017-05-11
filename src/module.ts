@@ -7,4 +7,5 @@ const url: string = URL.createObjectURL(blob);
 
 const jsonMidiEncoder = load(url);
 
-export const encode = jsonMidiEncoder.encode;
+// @todo Out of some reason the encode() function has to be typed again.
+export const encode: (midiFile: IMidiFile) => Promise<ArrayBuffer> = jsonMidiEncoder.encode;
