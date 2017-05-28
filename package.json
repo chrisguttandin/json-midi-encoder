@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "json-midi-encoder-broker": "^2.0.6",
-    "json-midi-encoder-worker": "^2.0.2"
+    "json-midi-encoder-worker": "^2.0.3"
   },
   "description": "This module encodes a JSON representation of MIDI data into a binary MIDI file.",
   "devDependencies": {
