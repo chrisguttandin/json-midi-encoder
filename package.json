@@ -4,7 +4,7 @@
     "url": "https://github.com/chrisguttandin/json-midi-encoder/issues"
   },
   "dependencies": {
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.0",
     "json-midi-encoder-broker": "^2.0.9",
     "json-midi-encoder-worker": "^2.0.4"
   },
