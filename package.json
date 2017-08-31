@@ -6,7 +6,7 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "json-midi-encoder-broker": "^2.0.11",
-    "json-midi-encoder-worker": "^2.0.5"
+    "json-midi-encoder-worker": "^2.0.6"
   },
   "description": "This module encodes a JSON representation of MIDI data into a binary MIDI file.",
   "devDependencies": {
