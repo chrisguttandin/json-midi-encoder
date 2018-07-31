@@ -20,8 +20,8 @@ describe('module', () => {
                 loadFixtureAsArrayBuffer(midiFilename, (err, arrayBuffer) => {
                     expect(err).to.be.null;
 
-                    loadFixtureAsJson(jsonFilename, (err, json) => {
-                        expect(err).to.be.null;
+                    loadFixtureAsJson(jsonFilename, (rr, json) => {
+                        expect(rr).to.be.null;
 
                         jsonMidiEncoder
                             .encode(json)
@@ -42,8 +42,8 @@ describe('module', () => {
 
                     jsonMidiEncoder
                         .encode(arrayBuffer)
-                        .catch((err) => {
-                            expect(err.message).to.equal('The given JSON object seems to be invalid.');
+                        .catch((rr) => {
+                            expect(rr.message).to.equal('The given JSON object seems to be invalid.');
 
                             done();
                         });
