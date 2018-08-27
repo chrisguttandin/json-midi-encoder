@@ -9,3 +9,5 @@ const jsonMidiEncoder = load(url);
 
 // @todo Out of some reason the encode() function has to be typed again.
 export const encode: (midiFile: IMidiFile) => Promise<ArrayBuffer> = jsonMidiEncoder.encode;
+
+URL.revokeObjectURL(url);
