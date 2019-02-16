@@ -9,9 +9,12 @@ describe('module', () => {
             [ 'because' ],
             [ 'MIDIOkFormat1-lyrics' ],
             [ 'MIDIOkFormat2' ],
+            [ 'minute_waltz' ],
+            [ 'rachmaninov3' ],
             [ 'scale' ],
             [ 'SubTractor 1' ],
-            [ 'SubTractor 2' ]
+            [ 'SubTractor 2' ],
+            [ 'test8bars' ]
         ], (filename) => {
 
             it('should encode the json object', function (done) {
