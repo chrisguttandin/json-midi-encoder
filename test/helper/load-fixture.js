@@ -1,14 +1,3 @@
-function base64ToArrayBuffer (encodedData) {
-    const decodedData = atob(encodedData.replace(/\s/g, ''));
-    const uint8Array = new Uint8Array(decodedData.length);
-
-    Array.prototype.forEach.call(uint8Array, function (value, index) {
-        uint8Array[index] = decodedData.charCodeAt(index);
-    });
-
-    return uint8Array.buffer;
-}
-
 export const loadFixtureAsArrayBuffer = (fixture, callback) => {
     const request = new XMLHttpRequest();
 
@@ -16,18 +5,10 @@ export const loadFixtureAsArrayBuffer = (fixture, callback) => {
         callback('request-failed');
     };
     request.onload = function (event) {
-        if (fixture.slice(-4) === '.txt') {
-            callback(null, base64ToArrayBuffer(event.target.response));
-        } else {
-            callback(null, event.target.response);
-        }
+        callback(null, event.target.response);
     };
-    request.open('GET', 'base/test/fixtures/' + fixture);
-
-    if (fixture.slice(-4) !== '.txt') {
-        request.responseType = 'arraybuffer';
-    }
-
+    request.open('GET', '/base/test/fixtures/' + fixture);
+    request.responseType = 'arraybuffer';
     request.send();
 };
 
@@ -44,6 +25,6 @@ export const loadFixtureAsJson = (fixture, callback) => {
             callback('request-failed');
         }
     };
-    request.open('GET', 'base/test/fixtures/' + fixture);
+    request.open('GET', '/base/test/fixtures/' + fixture);
     request.send();
 };

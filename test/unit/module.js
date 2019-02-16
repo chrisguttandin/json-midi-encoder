@@ -5,22 +5,22 @@ describe('module', () => {
 
     describe('encode()', () => {
 
-        leche.withData({
-            'MIDIOkFormat1-lyrics': [ 'MIDIOkFormat1-lyrics.mid', 'MIDIOkFormat1-lyrics.json' ],
-            'MIDIOkFormat2': [ 'MIDIOkFormat2.mid', 'MIDIOkFormat2.json' ],
-            'SubTractor 1': [ 'SubTractor 1.mid.txt', 'SubTractor 1.json' ],
-            'SubTractor 2': [ 'SubTractor 2.mid', 'SubTractor 2.json' ],
-            'because': [ 'because.mid', 'because.json' ],
-            'scale': [ 'scale.mid', 'scale.json' ]
-        }, (midiFilename, jsonFilename) => {
+        leche.withData([
+            [ 'because' ],
+            [ 'MIDIOkFormat1-lyrics' ],
+            [ 'MIDIOkFormat2' ],
+            [ 'scale' ],
+            [ 'SubTractor 1' ],
+            [ 'SubTractor 2' ]
+        ], (filename) => {
 
             it('should encode the json object', function (done) {
                 this.timeout(4000);
 
-                loadFixtureAsArrayBuffer(midiFilename, (err, arrayBuffer) => {
+                loadFixtureAsArrayBuffer(filename + '.mid', (err, arrayBuffer) => {
                     expect(err).to.be.null;
 
-                    loadFixtureAsJson(jsonFilename, (rr, json) => {
+                    loadFixtureAsJson(filename + '.json', (rr, json) => {
                         expect(rr).to.be.null;
 
                         jsonMidiEncoder
@@ -37,7 +37,7 @@ describe('module', () => {
             it('should refuse to encode a none json object', function (done) {
                 this.timeout(4000);
 
-                loadFixtureAsArrayBuffer(midiFilename, (err, arrayBuffer) => {
+                loadFixtureAsArrayBuffer(filename + '.mid', (err, arrayBuffer) => {
                     expect(err).to.be.null;
 
                     jsonMidiEncoder
