@@ -48,8 +48,8 @@ describe('module', () => {
 
                     jsonMidiEncoder
                         .encode(arrayBuffer)
-                        .catch((err2) => {
-                            expect(err2.message).to.equal('The given JSON object seems to be invalid.');
+                        .catch((err_) => {
+                            expect(err_.message).to.equal('The given JSON object seems to be invalid.');
 
                             done();
                         });
