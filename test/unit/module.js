@@ -22,40 +22,48 @@ describe('module', () => {
             [ 'test8bars' ]
         ], (filename) => {
 
-            it('should encode the json object', function (done) {
-                this.timeout(4000);
+            describe('with a json object', () => {
 
-                loadFixtureAsArrayBuffer(filename + '.mid', (err, arrayBuffer) => {
-                    expect(err).to.be.null;
+                let arrayBuffer;
+                let json;
 
-                    loadFixtureAsJson(filename + '.json', (rr, json) => {
-                        expect(rr).to.be.null;
+                beforeEach(async function () {
+                    this.timeout(6000);
 
-                        jsonMidiEncoder
-                            .encode(json)
-                            .then((midiFile) => {
-                                expect(new Uint8Array(midiFile)).to.deep.equal(new Uint8Array(arrayBuffer));
-
-                                done();
-                            });
-                    });
+                    arrayBuffer = await loadFixtureAsArrayBuffer(`${ filename }.mid`);
+                    json = await loadFixtureAsJson(`${ filename }.json`);
                 });
+
+                it('should encode the json object', async function () {
+                    this.timeout(4000);
+
+                    const midiFile = await jsonMidiEncoder.encode(json);
+
+                    expect(new Uint8Array(midiFile)).to.deep.equal(new Uint8Array(arrayBuffer));
+                });
+
             });
 
-            it('should refuse to encode a none json object', function (done) {
-                this.timeout(4000);
+            describe('with a binary file', () => {
 
-                loadFixtureAsArrayBuffer(filename + '.mid', (err, arrayBuffer) => {
-                    expect(err).to.be.null;
+                let arrayBuffer;
 
+                beforeEach(async function () {
+                    this.timeout(6000);
+
+                    arrayBuffer = await loadFixtureAsArrayBuffer(`${ filename }.mid`);
+                });
+
+                it('should refuse to encode the file', function (done) {
                     jsonMidiEncoder
                         .encode(arrayBuffer)
-                        .catch((err_) => {
-                            expect(err_.message).to.equal('The given JSON object seems to be invalid.');
+                        .catch((err) => {
+                            expect(err.message).to.equal('The given JSON object seems to be invalid.');
 
                             done();
                         });
                 });
+
             });
 
         });
