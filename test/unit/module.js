@@ -2,72 +2,63 @@ import * as jsonMidiEncoder from '../../src/module';
 import { loadFixtureAsArrayBuffer, loadFixtureAsJson } from '../helper/load-fixture';
 
 describe('module', () => {
-
     describe('encode()', () => {
+        leche.withData(
+            [
+                ['98137'],
+                ['A_F_NO7_01'],
+                ['MIDIOkFormat1-lyrics'],
+                ['MIDIOkFormat2'],
+                ['SubTractor 1'],
+                ['SubTractor 2'],
+                ['TheEntertainer'],
+                ['because'],
+                ['californication'],
+                ['minute_waltz'],
+                ['rachmaninov3'],
+                ['scale'],
+                ['test'],
+                ['test8bars']
+            ],
+            (filename) => {
+                describe('with a json object', () => {
+                    let arrayBuffer;
+                    let json;
 
-        leche.withData([
-            [ '98137' ],
-            [ 'A_F_NO7_01' ],
-            [ 'MIDIOkFormat1-lyrics' ],
-            [ 'MIDIOkFormat2' ],
-            [ 'SubTractor 1' ],
-            [ 'SubTractor 2' ],
-            [ 'TheEntertainer' ],
-            [ 'because' ],
-            [ 'californication' ],
-            [ 'minute_waltz' ],
-            [ 'rachmaninov3' ],
-            [ 'scale' ],
-            [ 'test' ],
-            [ 'test8bars' ]
-        ], (filename) => {
+                    beforeEach(async function () {
+                        this.timeout(6000);
 
-            describe('with a json object', () => {
+                        arrayBuffer = await loadFixtureAsArrayBuffer(`${filename}.mid`);
+                        json = await loadFixtureAsJson(`${filename}.json`);
+                    });
 
-                let arrayBuffer;
-                let json;
+                    it('should encode the json object', async function () {
+                        this.timeout(4000);
 
-                beforeEach(async function () {
-                    this.timeout(6000);
+                        const midiFile = await jsonMidiEncoder.encode(json);
 
-                    arrayBuffer = await loadFixtureAsArrayBuffer(`${ filename }.mid`);
-                    json = await loadFixtureAsJson(`${ filename }.json`);
+                        expect(new Uint8Array(midiFile)).to.deep.equal(new Uint8Array(arrayBuffer));
+                    });
                 });
 
-                it('should encode the json object', async function () {
-                    this.timeout(4000);
+                describe('with a binary file', () => {
+                    let arrayBuffer;
 
-                    const midiFile = await jsonMidiEncoder.encode(json);
+                    beforeEach(async function () {
+                        this.timeout(6000);
 
-                    expect(new Uint8Array(midiFile)).to.deep.equal(new Uint8Array(arrayBuffer));
-                });
+                        arrayBuffer = await loadFixtureAsArrayBuffer(`${filename}.mid`);
+                    });
 
-            });
-
-            describe('with a binary file', () => {
-
-                let arrayBuffer;
-
-                beforeEach(async function () {
-                    this.timeout(6000);
-
-                    arrayBuffer = await loadFixtureAsArrayBuffer(`${ filename }.mid`);
-                });
-
-                it('should refuse to encode the file', function (done) {
-                    jsonMidiEncoder
-                        .encode(arrayBuffer)
-                        .catch((err) => {
+                    it('should refuse to encode the file', function (done) {
+                        jsonMidiEncoder.encode(arrayBuffer).catch((err) => {
                             expect(err.message).to.equal('The given JSON object seems to be invalid.');
 
                             done();
                         });
+                    });
                 });
-
-            });
-
-        });
-
+            }
+        );
     });
-
 });
