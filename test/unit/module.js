@@ -26,14 +26,14 @@ describe('module', () => {
                     let json;
 
                     beforeEach(async function () {
-                        this.timeout(6000);
+                        this.timeout(20000);
 
                         arrayBuffer = await loadFixtureAsArrayBuffer(`${filename}.mid`);
                         json = await loadFixtureAsJson(`${filename}.json`);
                     });
 
                     it('should encode the json object', async function () {
-                        this.timeout(4000);
+                        this.timeout(20000);
 
                         const midiFile = await jsonMidiEncoder.encode(json);
 
@@ -45,7 +45,7 @@ describe('module', () => {
                     let arrayBuffer;
 
                     beforeEach(async function () {
-                        this.timeout(6000);
+                        this.timeout(20000);
 
                         arrayBuffer = await loadFixtureAsArrayBuffer(`${filename}.mid`);
                     });
