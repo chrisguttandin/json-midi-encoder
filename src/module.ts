@@ -5,8 +5,8 @@ const blob: Blob = new Blob([worker], { type: 'application/javascript; charset=u
 
 const url: string = URL.createObjectURL(blob);
 
-const jsonMidiEncoder = load(url);
+const jsonMidiEncoder: ReturnType<typeof load> = load(url);
 
-export const encode = jsonMidiEncoder.encode;
+export const encode: typeof jsonMidiEncoder.encode = jsonMidiEncoder.encode;
 
 URL.revokeObjectURL(url);
