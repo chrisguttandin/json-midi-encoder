@@ -12,7 +12,7 @@ module.exports = (config) => {
         client: {
             mocha: {
                 bail: true,
-                timeout: 4000
+                timeout: 20000
             }
         },
 
