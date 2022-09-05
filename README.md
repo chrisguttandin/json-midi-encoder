@@ -2,7 +2,6 @@
 
 **This module encodes a JSON representation of MIDI data into a binary MIDI file.**
 
-[![dependencies](https://img.shields.io/david/chrisguttandin/json-midi-encoder.svg?style=flat-square)](https://github.com/chrisguttandin/json-midi-encoder/network/dependencies)
 [![version](https://img.shields.io/npm/v/json-midi-encoder.svg?style=flat-square)](https://www.npmjs.com/package/json-midi-encoder)
 
 By using this module it is possible to encode a JSON representation of a MIDI file into its binary
