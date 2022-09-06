@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.19.0",
-        "json-midi-encoder-broker": "^4.0.72",
+        "json-midi-encoder-broker": "^4.0.73",
         "json-midi-encoder-worker": "^6.1.8",
         "tslib": "^2.4.0"
     },
