@@ -11,7 +11,7 @@
     "dependencies": {
         "@babel/runtime": "^7.21.5",
         "json-midi-encoder-broker": "^4.0.84",
-        "json-midi-encoder-worker": "^6.1.19",
+        "json-midi-encoder-worker": "^6.1.20",
         "tslib": "^2.5.0"
     },
     "description": "This module encodes a JSON representation of MIDI data into a binary MIDI file.",
