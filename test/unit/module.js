@@ -1,5 +1,6 @@
-import * as jsonMidiEncoder from '../../src/module';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { loadFixtureAsArrayBuffer, loadFixtureAsJson } from '../helper/load-fixture';
+import { encode } from '../../src/module';
 import { filenames } from '../helper/filenames';
 
 describe('module', () => {
@@ -9,17 +10,13 @@ describe('module', () => {
                 let arrayBuffer;
                 let json;
 
-                beforeEach(async function () {
-                    this.timeout(20000);
-
+                beforeEach(async () => {
                     arrayBuffer = await loadFixtureAsArrayBuffer(`${filename}.mid`);
                     json = await loadFixtureAsJson(`${filename}.json`);
                 });
 
-                it('should encode the json object', async function () {
-                    this.timeout(20000);
-
-                    const midiFile = await jsonMidiEncoder.encode(json);
+                it('should encode the json object', async () => {
+                    const midiFile = await encode(json);
 
                     expect(new Uint8Array(midiFile)).to.deep.equal(new Uint8Array(arrayBuffer));
                 });
@@ -28,18 +25,20 @@ describe('module', () => {
             describe('with a binary file', () => {
                 let arrayBuffer;
 
-                beforeEach(async function () {
-                    this.timeout(20000);
-
+                beforeEach(async () => {
                     arrayBuffer = await loadFixtureAsArrayBuffer(`${filename}.mid`);
                 });
 
-                it('should refuse to encode the file', function (done) {
-                    jsonMidiEncoder.encode(arrayBuffer).catch((err) => {
+                it('should refuse to encode the file', () => {
+                    const { promise, resolve } = Promise.withResolvers();
+
+                    encode(arrayBuffer).catch((err) => {
                         expect(err.message).to.equal('The given JSON object seems to be invalid.');
 
-                        done();
+                        resolve();
                     });
+
+                    return promise;
                 });
             });
         }
